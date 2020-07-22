@@ -6,19 +6,21 @@
 # DPS1 (@Name-Realm): @Nyntein-Illidan 
 # DPS2 (@Name-Realm): @Embreo-illidan
 
+import sys
 contents = []
-while True:
-    try:
-        line = input()
-        
-        if(line == ""):
-            break
-        else:
-            x = line.split(': @')
-    except EOFError:
+while(True):
+    msg = sys.stdin.readline()
+    if(msg == "\n"):
         break
-    contents.append(x[1])
-
+    else:
+         #msg.strip(" ")
+         msg=msg.strip()
+         #print("1:"+msg)
+         x = msg.split(' @')
+         if(len(x) != 1):
+            if(x != "\n" and x!= "\r\n" and x !="\d" and x !=""):
+                contents.append(x[1])
+#print(msg)
 keyLevel = input("Level of key -> ")
 keyType = input("base, armor stack, timed, key etc.. -> ")
 print("---------------")
